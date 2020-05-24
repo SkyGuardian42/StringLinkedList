@@ -15,8 +15,10 @@ public class StringLinkedListTest {
   public void testAdd_String() {
     System.out.println("add");
     StringLinkedList instance = new StringLinkedList();
-    instance.add("Demo Text One");
-    instance.add("Demo Text Two");
+    instance.add("A");
+    instance.add("B");
+    
+    printListElements(listElements(instance));
   }
 
   /**
@@ -26,10 +28,13 @@ public class StringLinkedListTest {
   public void testAdd_int_String() {
     System.out.println("add");
     StringLinkedList instance = new StringLinkedList();
-    instance.add(0, "Hello ");
-    instance.add(1, "are you?");
-    instance.add(1, "how ");
-    instance.add(0, "Yo! ");
+    instance.add(0, "B");
+    instance.add(1, "D");
+    instance.add(1, "C");
+    instance.add(0, "A");
+    
+    printListElements(listElements(instance));
+
   }
 
   /**
@@ -53,6 +58,7 @@ public class StringLinkedListTest {
     
     result = instance.contains("Kenobi");
     assertEquals(false, result);
+    
   }
 
   /**
@@ -82,14 +88,17 @@ public class StringLinkedListTest {
   public void testRemove_String() {
     System.out.println("remove");
     StringLinkedList instance = new StringLinkedList();
-    instance.add("One");
-    instance.add("Two");
-    
-    boolean result = instance.remove("One");
+    instance.add("B");
+    instance.add("A");
+
+    boolean result = instance.remove("B");
     assertEquals(true, result);
     
-    result = instance.remove("Three");
+    result = instance.remove("C");
     assertEquals(false, result);
+  
+    printListElements(listElements(instance));
+
   }
 
   /**
@@ -108,6 +117,9 @@ public class StringLinkedListTest {
     
     result = instance.remove(1);
     assertEquals("Three", result);
+    
+    printListElements(listElements(instance));
+
   }
 
   /**
@@ -145,5 +157,20 @@ public class StringLinkedListTest {
     assertEquals(1, result);
   }
 
+  public void printListElements(String[] list) {
+    for(int i = 0; i<list.length; i++) {
+      System.out.println(i + ": " + list[i]);
+    }
+  }
+  
+  public String[] listElements(StringLinkedList list) {
+    String[] ret = new String[list.size()];
+    
+    for(int i = 0; i < list.size(); i++) {
+      ret[i] = list.get(i);
+    }
+    
+    return ret;
+  }
   
 }

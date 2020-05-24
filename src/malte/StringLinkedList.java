@@ -120,6 +120,7 @@ public class StringLinkedList implements StringList {
       }
       
       this.first = this.first.next();
+      this.size --;
       return true;
     }
     
